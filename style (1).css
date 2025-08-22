@@ -1,0 +1,911 @@
+/* Reset & Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Background video full screen, peeche rahe */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;       
+  height: 100vh;
+  object-fit: cover; 
+  z-index: -1;
+  background-color: black;
+}
+
+body {
+  height: 100vh;
+  font-family: sans-serif;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon img {
+  width: 40px;
+  margin-bottom: 5px;
+}
+
+.icon span {
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Taskbar */
+.taskbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background-color: rgba(0, 0, 0, 0.312);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  backdrop-filter: blur(5px);
+}
+
+.start-button img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.taskbar-middle {
+  display: flex;
+  gap: 15px;
+}
+
+.system-tray {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  
+}
+.system-tray img:hover {
+  
+  background-color: rgba(101, 100, 100, 0.262);
+  /* border: #555 solid 1px; */
+  padding: 10px 0px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  
+}
+.system-tray p:hover {
+  background-color: rgba(101, 100, 100, 0.262);
+  border: none;
+  padding: 15px 0px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  
+}
+.wifi
+{
+    transform: scaleX(-1);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #2b2b2b;
+  border-radius: 3px;
+  padding: 9px 8px;
+  width: 250px;
+  color: white;
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.search-icon {
+  font-size: 16px;
+  transform: scaleX(-1);
+}
+
+.search-end-icon {
+  width: 22px;
+  height: 22px;
+  margin-left: 8px;
+}
+
+.task-bar-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: -1000px;
+  margin-right: auto;
+}
+
+.pin-to-taskbar-icon img,
+.pin-to-taskbar-icon2 img,
+.pin-to-taskbar-icon3 img {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pin-to-taskbar-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.pin-to-taskbar-icon2 img {
+  width: 25px;
+  height: 25px;
+}
+
+.pin-to-taskbar-icon3 img {
+  width: 26px;
+  height: 26px;
+}
+
+.pin-to-taskbar-icon img:hover,
+.pin-to-taskbar-icon2 img:hover,
+.pin-to-taskbar-icon3 img:hover {
+  transform: scale(1.2);
+}
+
+/* Window Styles */
+.window {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  width: 500px;
+  height: 300px;
+  background: #1e1e2f;
+  color: #f0f0f0;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #292942;
+  padding: 10px 16px;
+  cursor: move;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.window-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-controls button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #3f3f5a;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.window-controls button:hover {
+  background-color: #57577a;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.window-content {
+  flex: 1;
+  padding: 20px;
+  background: #2b2b40;
+  color: #e0e0e0;
+  font-size: 14px;
+  overflow-y: auto;
+}
+
+.maximized {
+  width: 100vw !important;
+  height: calc(100vh - 45px) !important;
+  top: 0 !important;
+  left: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Gameloop UI - Clean and Modern Look */
+.gameloop-interface {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 30px;
+  max-width: 1400px;
+  margin: auto;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.gameloop-divider {
+  border: none;
+  height: 2px;
+  background: #2e2e3f;
+  margin: 50px 0 30px;
+}
+
+.section-heading {
+  color: #00bcd4;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 1px 1px #00000066;
+  margin-bottom: 20px;
+}
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #00bcd4;
+  margin-top: 6px;
+  border-radius: 10px;
+}
+
+/* === 1. TRENDING GAMES === */
+.gameloop-trending-section {
+  margin-bottom: 40px;
+  /* Ensure section is visible */
+  display: block;
+}
+.trend-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.card-trend {
+  background: #2a2c3f;
+  border-radius: 12px;
+  padding: 15px;
+  width: 120px;
+  flex-shrink: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s;
+}
+.card-trend:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px #00bcd4aa;
+}
+.card-trend img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  background: #333;
+  border-radius: 6px;
+}
+.card-trend span {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* === 2. EDITOR'S PICKS === */
+.editor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+}
+
+.card-editor {
+  background: #2c2d40;
+  padding: 25px 15px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px #00000066;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 240px;
+}
+.card-editor:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px #00bcd4aa;
+}
+.card-editor img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+.card-editor span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 10px 0;
+  text-align: center;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+.install-btn {
+  padding: 8px 18px;
+  background: #00bcd4;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: auto;
+}
+.install-btn:hover {
+  background: #0197a4;
+}
+
+/* === 3. ALL GAMES SECTION === */
+/* Card icon upar, name niche (vertical layout) */
+.card-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.card-all img {
+  order: 1;
+}
+.card-all span {
+  order: 2;
+  margin-top: 8px;
+}
+.all-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 25px;
+}
+
+.card-all {
+  background: #262738;
+  padding: 20px 10px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px #00000055;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-all:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px #00bcd488;
+}
+.card-all img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background: #333;
+}
+.card-all span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1b2f;
+}
+::-webkit-scrollbar-thumb {
+  background: #00bcd4;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #009aa7;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .card-trend, .card-all {
+    width: 140px;
+    height: auto;
+  }
+
+  .card-editor img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .install-btn {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+}
+
+
+
+
+/* Valorant */
+.valorant-interface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.valorant-interface .banner {
+  width: 90%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.launch-btn {
+  padding: 8px 16px;
+  background: #e63946;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.launch-btn:hover {
+  background: #d62828;
+}
+
+.valorant-description {
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+  max-width: 90%;
+  line-height: 1.4;
+}
+
+/* Visual Studio Interface Fixes */
+.vs-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vs-top-bar {
+  display: flex;
+  gap: 10px;
+  background: #1e1e1e;
+  color: white;
+  padding: 8px 16px;
+  font-size: 13px;
+  border-bottom: 1px solid #444;
+}
+
+.vs-top-bar .btn {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.vs-top-bar .btn:hover {
+  background: #333;
+}
+
+.vs-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.vs-sidebar {
+  background: #252526;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vs-sidebar img {
+  width: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.vs-sidebar img:hover {
+  opacity: 1;
+}
+
+.vs-editor-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  padding: 0;
+}
+
+.vs-tab {
+  background: #2d2d2d;
+  color: white;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-bottom: 1px solid #444;
+}
+
+.code-editor {
+  flex: 1;
+  width: 100%;
+  resize: none;
+  background: transparent;
+  color: white;
+  border: none;
+  font-family: monospace;
+  font-size: 13px;
+  padding: 10px;
+  outline: none;
+  height: 100%; /* FULL HEIGHT */
+}
+
+.vs-status-bar {
+  background: #007acc;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.vs-top-bar select {
+  background: #2c2c2c;
+  color: white;
+  border: 1px solid #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background: #2d2d2d;
+  border: 1px solid #444;
+  list-style: none;
+  padding: 6px 0;
+  margin-top: 4px;
+  display: none;
+  flex-direction: column;
+  z-index: 10000;
+  font-size: 13px;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-menu li {
+  padding: 6px 14px;
+  cursor: pointer;
+  color: white;
+  white-space: nowrap;
+}
+
+.dropdown-menu li:hover {
+  background-color: #3a3a3a;
+}
+
+.vs-terminal {
+  background: #1e1e1e;
+  color: white;
+  font-family: monospace;
+  font-size: 13px;
+  height: 100px;
+  padding: 10px;
+  border-top: 1px solid #444;
+  display: block; /* ✅ Make sure it's visible */
+  overflow-y: auto;
+}
+
+/* This PC drive styling */
+.pc-interface {
+  display: flex;
+  gap: 16px;
+  padding-top: 10px;
+}
+
+.drive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #3a3a4f;
+  padding: 12px;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.drive img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.drive span {
+  font-size: 13px;
+  text-align: center;
+}
+/* This PC drive styling */
+.pc-interface {
+  display: flex;
+  gap: 16px;
+  padding-top: 10px;
+}
+
+.drive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #3a3a4f;
+  padding: 12px;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.drive img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.drive span {
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ===================== Chrome UI Styles ===================== */
+.chrome-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.chrome-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c2c2c;
+  padding: 6px 10px;
+}
+
+.chrome-tabs {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  background-color: #3c3c3c;
+  padding: 5px 12px;
+  margin-right: 5px;
+  border-radius: 5px 5px 0 0;
+  font-size: 14px;
+}
+
+.tab.active {
+  background-color: #1e1e1e;
+  border-bottom: 2px solid #1e1e1e;
+  
+}
+
+.tab-btn {
+  font-size: 18px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.chrome-controls img {
+  width: 14px;
+  margin-left: 8px;
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+.chrome-controls img:hover {
+  filter: brightness(1);
+}
+
+.chrome-address-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2b2b2b;
+  padding: 6px 10px;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  
+}
+
+.chrome-address-bar input {
+  flex: 1;
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  border-radius: 60px;
+}
+
+.chrome-address-bar img {
+  width: 16px;
+  cursor: pointer;
+  filter: brightness(0.9);
+}
+
+.chrome-address-bar img:hover {
+  filter: brightness(1.2);
+}
+
+.chrome-browser-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.chrome-browser-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===================== Start menu ===================== */
+.start-menu {
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+  display: flex;
+  width: 700px;
+  height: 500px;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 8px;
+  overflow: hidden;
+  display: none;
+  z-index: 9999;
+}
+
+.start-left {
+  width: 40%;
+  padding: 16px;
+  overflow-y: auto;
+  background: #1e1e1e;
+  border-right: 1px solid #333;
+  color: white;
+}
+
+.start-right {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  color: white;
+}
+
+.section h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.app-entry, .folder-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.app-entry:hover, .folder-entry:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.folder-entry span {
+  font-weight: bold;
+  color: #bbb;
+}
+
+.tile-section h4 {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.tile-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tile {
+  background: #2d2d2d;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tile img {
+  width: 32px;
+  margin-right: 8px;
+}
+
+.tile.large {
+  width: 140px;
+  height: 70px;
+}
+
+.tile.small {
+  width: 70px;
+  height: 70px;
+  padding: 5px;
+}
+
+.start-toggle {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+}
